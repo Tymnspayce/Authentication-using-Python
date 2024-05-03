@@ -6,10 +6,10 @@ from Signup import signLogic
 
 #-------------------------This is the Starting of the section is for the Database Coding--------------------------#
 def CreateConn():
-        return pymysql.connect(host="localhost",database="pyworks",user="root",password="Aditya@1003",port=3306)
+    return pymysql.connect(host="localhost",database="pyworks",user="root",password="Aditya@1003",port=3306)
 
 
-def Login_Logic():
+def Login_Logic(eem,eps):
     username=eem.get()
     password=eps.get()
     if(username=="" or password==""):
@@ -25,9 +25,13 @@ def Login_Logic():
             messagebox.showinfo("Error!!","Invalid Login")
             eem.delete(0,END)
             eps.delete(0,END)
-            # print("Invalid Login")
         else:
             messagebox.showinfo("Success!!","Successfully Logged in")
+            t.destroy()
+            from default import fetchlogic
+            fetchlogic()
+            
+
             
 
 
@@ -39,6 +43,7 @@ def loginLogic():
         t.destroy()
         signLogic()
 
+    global t
     t=Tk()
 
     # To change icon of window
@@ -80,7 +85,7 @@ def loginLogic():
         eps.delete(0,END)
 
     # Adding Buttons to window
-    submit=Button(t,text="Submit",background="#ff004f",width="5",fg="white",height="1",command=Login_Logic)
+    submit=Button(t,text="Submit",background="#ff004f",width="5",fg="white",height="1",command=lambda: Login_Logic(eem,eps))
     submit.place(x="70",y="410")
 
     reset=Button(t,text="Reset ",background="#ff004f",width="5",fg="white",height="1",command=Clear)

@@ -5,7 +5,7 @@ from tkinter import messagebox
 def CreateConn():
     return pymysql.connect(host="localhost",database="pyworks",user="root",password="Aditya@1003",port=3306)
 
-def signup():
+def signup(enm,eem,eps,emn,ect):
     n=enm.get()
     e=eem.get()
     p=eps.get()
@@ -110,10 +110,16 @@ def signLogic():
         ect.delete(0,END)
 
     # Adding Buttons to window
-    submit=Button(t,text="Submit",background="#ff004f",width="10",fg="white",height="1",command=signup)
+    submit=Button(t,text="Submit",background="#ff004f",width="10",fg="white",height="1",command=lambda: signup(enm,eem,eps,emn,ect))
     submit.place(x="90",y="405")
 
     reset=Button(t,text="Reset ",background="#ff004f",width="10",fg="white",height="1",command=Clear)
     reset.place(x="220",y="405")
 
     mainloop()
+
+
+
+
+
+
